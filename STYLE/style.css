@@ -1,0 +1,123 @@
+body {
+    font-family: sans-serif;
+    
+}
+
+header {
+    display: flex;
+    padding: 10px;
+}
+
+img {
+    height: 60px;
+}
+
+#searchBar {
+    padding-left: 25px;
+    margin-left: 30px;
+    border-radius: 10px;
+    border: none;
+    width: 70%;
+    background-color: rgb(224, 240, 247);
+}
+
+#city {
+    font-size: 25px;
+}
+
+#temperature {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#forecast {
+    padding: 5px;
+    padding-left: 25px;
+    border-radius: 10px;
+    background-color: rgb(224, 240, 247);
+    height: 275px;
+    width: 95%;
+}
+
+#weather-Details {
+    margin-top: 35px;
+    padding: 5px;
+    padding-left: 25px;
+    border-radius: 10px;
+    background-color: rgb(224, 240, 247);
+    height: 300px;
+    width: 95%;
+}
+
+table, #forecastBlocks {
+    border-spacing: 20px 0px;
+}
+
+#forecastBlock {
+    justify-content: center;
+    /* height: 80px; */
+    /* width: 150px; */
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    /* border: 2px solid black; */
+}
+
+
+.table-container {
+    height: 220px;
+    overflow-y: auto;
+    /* border: 1px solid #ccc; */
+    border-radius: 10px;
+}
+
+#temp-P {
+    font-weight: bolder;
+    justify-content: center;
+    padding-left: 15px;
+}
+
+#timeP {
+    padding-left: 10px;
+}
+
+table, #weatherTable {
+    border-spacing: 20px 10px;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Creates 4 equal columns */
+    width: 95vw; /* Occupy full viewport width */
+    gap: 10px; /* Optional: adds space between columns */
+    box-sizing: border-box; /* Include padding and border in width */
+    padding: 10px; /* Optional: add padding around the grid */
+    padding-right: 25px;
+}
+
+.grid-item {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    padding-left: 15px;
+    /* text-align: center; */
+    height: 100px;
+}
+
+#icons {
+    width: 50px;
+    height: 50px;
+    padding-right: 20px;
+    padding-top: 25px;
+}
+
+#cloud, #dew-point, #humidity, #pressure, #wind, #uv-index, #feels-like, #visiblity {
+    font-size: 20px;
+    font-weight: bolder;
+    justify-content: center;
+    padding-left: 15px;
+    padding-top: 15px;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="STYLE/style.css">
+</head>
+<body>
+    <header>
+        <p>Just Weather</p>
+        <img src="ICONS/weather-symbols-sun-with-clouds-0.png" alt="logo">
+        <input placeholder="Search for cities" id="searchBar">
+    </header>
+    <div>
+        <p id="city"></p>
+        <p id="temperature"></p>
+    </div>
+    <div id="forecast">
+        <p>TODAY'S FORECAST</p>
+        <div class="table-container">
+            <table id="forecastBlocks"><tr id="row"></tr></table>
+        </div>
+    </div>
+    <div id="weather-Details">
+        <p>WEATHER DETAILS</p>
+        <div class="grid-container">
+            <div class="grid-item">
+                <div>
+                    <p>Cloud</p>
+                    <p id="cloud"></p>
+                </div>
+                <div>
+                    <img src="ICONS/cloud.png" alt="cloud" id="icons">
+                </div>
+            </div>
+            <div class="grid-item">
+                <div>
+                    <p>Dewpoint</p>
+                    <p id="dew-point"></p>
+                </div>
+
+                <div>
+                    <img src="ICONS/dewpoint.png" alt="cloud" id="icons">
+                </div>
+            </div>
+            <div class="grid-item">
+                <div>
+                    <p>Humidity</p>
+                    <p id="humidity"></p>
+                </div>
+
+                <div>
+                    <img src="ICONS/humidity.png" alt="cloud" id="icons">
+                </div>
+            </div>
+            <div class="grid-item">
+                <div>
+                    <p>Pressure</p>
+                    <p id="pressure"></p>
+                </div>
+                <div>
+                    <img src="ICONS/resilience.png" alt="cloud" id="icons">
+                </div>
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <div>
+                    <p>Wind</p>
+                    <p id="wind"></p>
+                </div>
+
+                <div>
+                    <img src="ICONS/wind.png" alt="cloud" id="icons">
+                </div>
+            </div>
+            <div class="grid-item">
+                <div>
+                    <p>UV index</p>
+                    <p id="uv-index"></p>
+                </div>
+
+                <div>
+                    <img src="ICONS/uv-index.png" alt="cloud" id="icons">
+                </div>
+            </div>
+            <div class="grid-item">
+                <div>
+                    <p>Feels like</p>
+                    <p id="feels-like"></p>
+                </div>
+
+                <div>
+                    <img src="ICONS/health.png" alt="cloud" id="icons">
+                </div>
+            </div>
+            <div class="grid-item">
+                <div>
+                    <p>Visiblity</p>
+                    <p id="visiblity"></p>
+                </div>
+
+                <div>
+                    <img src="ICONS/visibility.png" alt="cloud" id="icons">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="SCRIPT/script.js"></script>
+</body>
+</html>
