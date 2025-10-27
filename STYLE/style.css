@@ -1,6 +1,6 @@
 body {
     font-family: sans-serif;
-    
+    position: relative;
 }
 
 header {
@@ -12,12 +12,21 @@ img {
     height: 60px;
 }
 
-#searchBar {
+.container {
+  position: relative; /* Establishes a positioning context for absolute children */
+  width: 100%;
+  /* height: 50px; */
+}
+
+#city-input {
+    position: relative; /* Needed for z-index to work */
+    z-index: 1; /* Lower z-index than the overlay-div */
     padding-left: 25px;
     margin-left: 30px;
     border-radius: 10px;
     border: none;
     width: 70%;
+    height: 50px;
     background-color: rgb(224, 240, 247);
 }
 
@@ -120,4 +129,26 @@ table, #weatherTable {
     justify-content: center;
     padding-left: 15px;
     padding-top: 15px;
+}
+
+.dropdown div {
+    position: relative;
+    top: 10;
+    left: 0;
+    width: 68%;
+    /* height: 100%; */
+    background-color: rgb(224, 240, 247);
+    /* color: white; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    z-index: 2; /* Higher z-index to appear on top */
+    padding: 8px;
+    margin-left: 45px;
+    cursor: pointer;
+    
+}
+.dropdown div:hover {
+  background-color: #f0f0f0;
 }

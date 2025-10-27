@@ -1,9 +1,12 @@
 const API_KEY = "f67eb91abc5e44659ad61626252410";
+const geoDB_API_KEY = '3599a34158msh3d5d305970ce1b4p13324ejsn1c7c03ca65a5';
 const apiURL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&days=2&q=Johannesburg`;
 const outputElement = document.getElementById('output');
 const forecastTable = document.getElementById('forecastBlocks');
 const currentTemp = document.getElementById('temperature');
-const displayCity = document.getElementById('city')
+const displayCity = document.getElementById('city');
+const input = document.querySelector("#city-input");
+const suggestions = document.querySelector("#suggestions");
 let testData = []
 
 function createBlock(data) {
@@ -62,34 +65,74 @@ function updateWeatherDetails(data) {
 
 }
 
-fetch(apiURL)
-    .then(response => {
-    // Check if the response was successful (e.g., status code 200)
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    // Parse the response body as JSON
-    return response.json();
-    })
-    .then(data => {
-    // Handle the parsed data
-    displayCity.textContent = data['location']['name'];
-    currentTemp.textContent = data['current']['temp_c'].toString() + '°';
-    // outputElement.textContent = JSON.stringify(data, null, 2);
-    console.log(data)
-    const forecast = data['forecast']['forecastday'];
-    forecast.forEach(element => {
-        if (element['hour']) {
-            const time = element['hour'];
-            time.forEach(hour => {
-                createBlock(hour)
-            })
-        }
-    });
 
-    updateWeatherDetails(data['current'])
-    })
-    .catch(error => {
-    // Handle any errors that occurred during the fetch operation
-    console.error('Error fetching data:', error);
-}); 
+input.addEventListener("input", async () => {
+  const query = input.value.trim();
+  if (query.length < 2) {
+    suggestions.innerHTML = "";
+    return;
+  }
+  
+  const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=${query}`;
+  const options = {
+	method: 'GET',
+	headers: {
+		'x-rapidapi-key': '3599a34158msh3d5d305970ce1b4p13324ejsn1c7c03ca65a5',
+		'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com'
+	}
+};
+  const response = await fetch(url, options);
+  const data = await response.json();
+
+//   console.log(data);
+
+  // Clear old suggestions
+  suggestions.innerHTML = "";
+
+  // Create new suggestion list
+  data.data.forEach(city => {
+    const option = document.createElement("div");
+    option.textContent = `${city.city}, ${city.country}`;
+    option.addEventListener("click", () => {
+      input.value = city.city;
+      suggestions.innerHTML = "";
+    });
+    suggestions.appendChild(option);
+    
+  });
+  
+  fetch(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&days=2&q=${input.value}`)
+      .then(response => {
+      // Check if the response was successful (e.g., status code 200)
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      // Parse the response body as JSON
+      return response.json();
+      })
+      .then(data => {
+      // Handle the parsed data
+     
+      displayCity.textContent = data['location']['name'];
+      currentTemp.textContent = data['current']['temp_c'].toString() + '°';
+      // outputElement.textContent = JSON.stringify(data, null, 2);
+      console.log(data)
+      const forecast = data['forecast']['forecastday'];
+      forecast.forEach(element => {
+          if (element['hour']) {
+              const time = element['hour'];
+              time.forEach(hour => {
+                  createBlock(hour)
+              })
+          }
+      });
+  
+      updateWeatherDetails(data['current'])
+      })
+      .catch(error => {
+      // Handle any errors that occurred during the fetch operation
+      console.error('Error fetching data:', error);
+  }); 
+
+});
+
